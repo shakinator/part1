@@ -263,25 +263,27 @@ h2 {
   display: flex; 
   margin-top: 20px;
   margin-bottom: 20px;
+  background-color:#f7f0f0;
+  border-radius:5px;
+  box-shadow: 5px 8px 8px #888888;
 }
 
 .checkoutProduct__info {
   padding-left: 20px;
-  
-}
+  margin-top: 5px;
+  color:#CC1B6B;
+  font-size: medium;
+  border-radius:4px;
 
-.checkoutProduct__info > button {
-  background: #f0c14b;
-  border: 1px solid;
-  margin-top: 10px;
-  border-color: #a88734 #9c7e31 #846a29;
-  color: #111;
 }
 
 .checkoutProduct__image {
-  object-fit: contain;
+  object-fit:scale-down;
+  margin-left: 15px;
   width: 180px;
   height: 180px;
+  opacity:0.9;
+
 }
 
 .checkoutProduct__rating {
@@ -290,4 +292,10 @@ h2 {
 .checkoutProduct__title {
   font-size: 17px;
   font-weight: 800;
+
+
+}
+.description {
+  color:#111;
+  font-size:13px;
 }
