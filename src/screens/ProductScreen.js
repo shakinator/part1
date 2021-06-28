@@ -68,7 +68,7 @@ const ProductScreen = ({ history, match }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
-          <Meta title={product.name[0]} />
+          <Meta title={product.name} />
           <Row>
             <Col md={6}>
               {product.images && (
@@ -78,7 +78,7 @@ const ProductScreen = ({ history, match }) => {
             <Col md={3}>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
-                  <h3>{product.name[0]}</h3>
+                  <h3>{product.name}</h3>
                   <h3>{product.category}</h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
