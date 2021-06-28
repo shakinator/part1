@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Form, Button, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { savePaymentMethod } from '../actions/cartActions'
+import { createOrder } from '../actions/orderActions'
+
 
 const PaymentScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
+  const orderCreate = useSelector((state) => state.orderCreate)
+  const { order, success, error } = orderCreate
   const { shippingAddress } = cart
 
   if (!shippingAddress) {
@@ -15,17 +19,33 @@ const PaymentScreen = ({ history }) => {
 
   const [paymentMethod, setPaymentMethod] = useState({id:''})
 
-  const orderCreate = useSelector((state) => state.orderCreate)
-  const { order, success, error } = orderCreate
 
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`)
+    }
+    // eslint-disable-next-line
+  }, [history, success])
 
 
   const submitHandler = (e) => {
     e.preventDefault()
     if(paymentMethod.id=="PayPal"){
       dispatch(savePaymentMethod(paymentMethod.id))
-      history.push('/placeorder')
+      dispatch(
+        createOrder({
+          orderItems: cart.cartItems,
+          shippingAddress: cart.shippingAddress,
+          paymentMethod: cart.paymentMethod,
+          itemsPrice: cart.itemsPrice,
+          shippingPrice: cart.shippingPrice,
+          taxPrice: cart.taxPrice,
+          totalPrice: cart.totalPrice,
+        })
+      )
+      history.push(`/placeorder`)
     }
     else if(paymentMethod.id==="COD"){
       dispatch(savePaymentMethod(paymentMethod.id))

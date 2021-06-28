@@ -5,6 +5,7 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
 // import Loader from '../components/Loader'
 import { addToCart, removeFromCart } from '../actions/cartActions'
+import '../index.css'
 
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id
@@ -31,7 +32,7 @@ const CartScreen = ({ match, location, history }) => {
   }
 
   return (
-    <>
+    <div className="container page">
       <Row>
         <Col md={8}>
           <h1>Shopping Cart</h1>
@@ -110,7 +111,7 @@ const CartScreen = ({ match, location, history }) => {
           </Card>
         </Col>
       </Row>
-    </>
+    </div>
   )
 }
 

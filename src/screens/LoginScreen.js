@@ -6,6 +6,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
+import '../index.css'
 
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
@@ -31,7 +32,7 @@ const LoginScreen = ({ location, history }) => {
   }
 
   return (
-    <FormContainer>
+    <FormContainer className="page">
       <h1>Sign In</h1>
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}

@@ -87,3 +87,7 @@ h2 {
 .logo {
   justify-content: left;
 }
+
+.page {
+  width: 80%;
+}

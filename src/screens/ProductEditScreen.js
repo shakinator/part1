@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as React from 'react';
 import Select from 'react-select';
-
+import '../index.css'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
@@ -27,6 +27,21 @@ const ProductEditScreen = ({ match, history }) => {
     { label: "SILVER", value:"SILVER" },
     { label: "GOLDEN", value: "GOLDEN"}
   ];
+  const categories = [
+    { label: "Kids", value:"Kids" },
+    { label: "Male", value: "Male"},
+    { label: "Female", value:"Female" },
+  ];
+
+  const subcategories = [
+    { label: "Topwear", value:"Topwear" },
+    { label: "Footwear", value: "Footwear"},
+    { label: "Bottomwear", value:"Bottomwear" },
+    { label: "Accesories", value:"Accesories" },
+  ];
+
+  
+
 
 
   const productId = match.params.id
@@ -130,6 +145,9 @@ const ProductEditScreen = ({ match, history }) => {
     )
   }
   const set= [];
+  const set1= [];
+  const set2= [];
+
   const selectedOption = null;
   const handleChange = (selectedOption) =>{
 
@@ -140,10 +158,30 @@ const ProductEditScreen = ({ match, history }) => {
     setColors(set);
     console.log(selectedOption);
   }
+  //categories
+  const handleChange1 = (selectedOption) =>{
+
+    for( let i = 0 ; i < selectedOption.length ; i++) {
+      set1.push((Object.values(selectedOption[i])[0]))
+      }
+    console.log(set1);
+    setCategory(set1);
+    console.log(selectedOption);
+  }
+  //sub categories
+  const handleChange2 = (selectedOption) =>{
+
+    for( let i = 0 ; i < selectedOption.length ; i++) {
+      set2.push((Object.values(selectedOption[i])[0]))
+      }
+    console.log(set2);
+    setSubCategory(set2);
+    console.log(selectedOption);
+  }
 
   return (
 
-    <>
+    <div className="container page">
       <Link to='/admin/productlist' className='btn btn-light my-3'>
         Go Back
       </Link>
@@ -260,22 +298,34 @@ const ProductEditScreen = ({ match, history }) => {
 
             <Form.Group controlId='category'>
               <Form.Label>Category</Form.Label>
+              {/*
               <Form.Control
                 type='text'
                 placeholder='Kids Ladies or Gents'
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
+              */}
+              <Select options={categories}
+              onChange={handleChange1}
+              autoFocus="false"
+              />
             </Form.Group>
 
             <Form.Group controlId='subCategory'>
               <Form.Label>Sub Category</Form.Label>
+              {/*
               <Form.Control
                 type='text'
                 placeholder='Topwear,Bottomwear,footwear,accessories'
                 value={subCategory}
                 onChange={(e) => setSubCategory(e.target.value)}
               ></Form.Control>
+              */}
+              <Select options={subcategories}
+              onChange={handleChange2}
+              autoFocus="false"
+              />
             </Form.Group>
 
             <Form.Group controlId='descriptionSmall'>
@@ -308,7 +358,7 @@ const ProductEditScreen = ({ match, history }) => {
           </Form>
         )}
       </FormContainer>
-    </>
+    </div>
   )
 }
 

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
+import '../index.css'
 
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -42,7 +43,6 @@ const PlaceOrderScreen = ({ history }) => {
   }, [history, success])
 
   const placeOrderhandler = () => {
-    console.log(cart.paymentMethod)
     dispatch(
       createOrder({
         orderItems: cart.cartItems,
@@ -54,9 +54,15 @@ const PlaceOrderScreen = ({ history }) => {
         totalPrice: cart.totalPrice,
       })
     )
+    if(cart.paymentMethod=="COD") {
+      history.push('/profile')
+    }
+    if(cart.paymentMethod=="PayPal") {
+      //history.push(`/order/${order._id}`)
+    }
   }
   return (
-    <>
+    <div className="container page">
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>
@@ -157,7 +163,7 @@ const PlaceOrderScreen = ({ history }) => {
           </Card>
         </Col>
       </Row>
-    </>
+    </div>
   )
 }
 

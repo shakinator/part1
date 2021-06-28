@@ -7,6 +7,7 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { getUserDetails, updateUser } from '../actions/userActions'
 import { USER_UPDATE_RESET } from '../constants/userConstants'
+import '../index.css'
 const UserEditScreen = ({ match, history }) => {
   const userId = match.params.id
   const [name, setName] = useState('')
@@ -49,7 +50,7 @@ const UserEditScreen = ({ match, history }) => {
   }
 
   return (
-    <>
+    <div className="container page">
       <Link to='/admin/userlist' className='btn btn-light my-3'>
         Go Back
       </Link>
@@ -114,7 +115,7 @@ const UserEditScreen = ({ match, history }) => {
           </Form>
         )}
       </FormContainer>
-    </>
+    </div>
   )
 }
 

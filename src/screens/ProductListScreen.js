@@ -70,7 +70,7 @@ const ProductListScreen = ({ history, match }) => {
   }
 
   return (
-    <>
+    <div className="container page">
       <Row className='align-items-center'>
         <Col>
           <h1>Products</h1>
@@ -141,7 +141,7 @@ const ProductListScreen = ({ history, match }) => {
           <Paginate pages={pages} page={page} isAdmin={true} />
         </>
       )}
-    </>
+    </div>
   )
 }
 
