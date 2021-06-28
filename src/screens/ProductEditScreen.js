@@ -1,5 +1,8 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import * as React from 'react';
+import Select from 'react-select';
+
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,9 +10,25 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
-import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
+
+
+
+
 
 const ProductEditScreen = ({ match, history }) => {
+
+  const colours = [
+    { label: "RED", value:"RED" },
+    { label: "BLUE", value: "BLUE"},
+    { label: "BLACK", value:"BLACK" },
+    { label: "PINK", value:"PINK" },
+    { label: "VIOLET", value:"VIOLET"},
+    { label: "SILVER", value:"SILVER" },
+    { label: "GOLDEN", value: "GOLDEN"}
+  ];
+
+
   const productId = match.params.id
   const [name, setName] = useState('')
   const [mrp, setMrp] = useState(0)
@@ -25,6 +44,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
+  const nameCategoryArray =[]
 
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
@@ -86,13 +106,16 @@ const ProductEditScreen = ({ match, history }) => {
   }
 
   const submitHandler = (e) => {
-    let colors = e.target[5].value.split(',')
-    colors = colors.map((color) => color.toLowerCase())
+    //let colors = e.target[5].value.split(',')
+    //colors = colors.map((color) => color.toLowerCase())
     e.preventDefault()
+    nameCategoryArray.push(name);
+    nameCategoryArray.push(category);
+    console.log(nameCategoryArray)
     dispatch(
       updateProduct({
         _id: productId,
-        name: name.toLowerCase(),
+        name:name,
         mrp,
         discountPrice,
         images,
@@ -106,8 +129,20 @@ const ProductEditScreen = ({ match, history }) => {
       })
     )
   }
+  const set= [];
+  const selectedOption = null;
+  const handleChange = (selectedOption) =>{
+
+    for( let i = 0 ; i < selectedOption.length ; i++) {
+      set.push((Object.values(selectedOption[i])[0]))
+      }
+    console.log(set);
+    setColors(set);
+    console.log(selectedOption);
+  }
 
   return (
+
     <>
       <Link to='/admin/productlist' className='btn btn-light my-3'>
         Go Back
@@ -175,13 +210,33 @@ const ProductEditScreen = ({ match, history }) => {
 
             <Form.Group controlId='colors'>
               <Form.Label>Available Colors</Form.Label>
+              {/*
               <Form.Control
                 type='text'
                 placeholder='Enter Colors with comma saperated'
                 value={colors}
                 onChange={(e) => setColors(e.target.value)}
               ></Form.Control>
+              */}
+              
+              <Select options={colours} isMulti
+              onChange={handleChange}
+              autoFocus="false"
+              />
+              {/*
+              <select multiple >
+                {colours.map((option)=>(
+                  <option value={colours.value}
+                  onChange={(e) => setColors(e.target.value)}
+                  >
+                    {option.label}
+                  </option>
+                ))}
+                </select>*/}
             </Form.Group>
+          
+
+
 
             <Form.Group controlId='countInStock'>
               <Form.Label>Count In Stock</Form.Label>
@@ -256,5 +311,6 @@ const ProductEditScreen = ({ match, history }) => {
     </>
   )
 }
+
 
 export default ProductEditScreen

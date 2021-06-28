@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import {
   Container,
   Row,
@@ -8,16 +7,11 @@ import {
   FormControl,
   Col,
 } from "react-bootstrap";
+import '../index.css';
+
 
 const Footer = () => {
   return (
-    // <footer>
-    //   <Container>
-    //     <Row>
-    //       <Col className='text-center py-3'>Copyright &copy; Sarvacharya</Col>
-    //     </Row>
-    //   </Container>
-    // </footer>
     <footer
       className="pt-4"
       style={{ backgroundColor: "black", fontSize: "14px" }}
@@ -34,7 +28,7 @@ const Footer = () => {
             </p>
           </Col>
           <Col md="3">
-            <h5 className="text-white email">Subscribe</h5>
+            <h5 className="text-white ">Subscribe</h5>
             <Form className="rounded ">
               <InputGroup className="mb-3 ">
                 <FormControl
@@ -68,16 +62,14 @@ const Footer = () => {
             <h5 className="text-white">MY ACCOUNT</h5>
             <Row>
               <Col>
-                <p>About Us </p>
-                <p><Link className="link-footer" to={'/contactus'}>Contact Us</Link></p>
+                <p>About US</p>
+                <p>Contact Us</p>
                 <p>My Account</p>
-                <p><Link className="link-footer" to={'/privacypolicy'}>Privacy Policy</Link></p>
               </Col>
               <Col>
                 <p>Order History</p>
                 <p>Advanced Search</p>
                 <p>Login</p>
-                <p><Link className="link-footer" to={'/terms'}>Terms and Conditions</Link></p>
               </Col>
             </Row>
           </Col>
@@ -106,7 +98,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-                  <i class="fab fa-facebook"></i>
+                  <i class="fab fa-facebook social"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -114,7 +106,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-                  <i class="fab fa-instagram"></i>
+                  <i class="fab fa-instagram social"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -122,7 +114,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-                  <i class="fab fa-linkedin-in"></i>
+                  <i class="fab fa-linkedin-in social"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -130,12 +122,13 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-                  <i class="fab fa-twitter"></i>
+                  <i class="fab fa-twitter social"></i>
                 </a>
               </li>
             </ul>
           </Col>
         </Row>
+        
         <Row>
           <Col className="text-center py-3">
             <>
@@ -162,7 +155,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-	                <i class="fab fa-cc-stripe"></i>
+	                <i class="fab fa-cc-visa"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -170,7 +163,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-	                <i class="fab fa-cc-mastercard"></i>
+	                <i class="fab fa-cc-stripe"></i>
                 </a>
               </li>
             </ul>

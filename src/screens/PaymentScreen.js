@@ -13,14 +13,35 @@ const PaymentScreen = ({ history }) => {
     history.push('/shipping')
   }
 
-  const [paymentMethod, setPaymentMethod] = useState('PayPal')
+  const [paymentMethod, setPaymentMethod] = useState({id:''})
+
+  const orderCreate = useSelector((state) => state.orderCreate)
+  const { order, success, error } = orderCreate
 
   const dispatch = useDispatch()
+
+
   const submitHandler = (e) => {
+    e.preventDefault()
+    if(paymentMethod.id=="PayPal"){
+      dispatch(savePaymentMethod(paymentMethod))
+      history.push('/placeorder')
+    }
+    else if(paymentMethod.id==="COD"){
+      dispatch(savePaymentMethod(paymentMethod))
+      history.push(`/order/`)
+    }
+  }
+  
+  /* 
+    const submitHandler = (e) => {
     e.preventDefault()
     dispatch(savePaymentMethod(paymentMethod))
     history.push('/placeorder')
   }
+  */
+
+
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
@@ -35,8 +56,7 @@ const PaymentScreen = ({ history }) => {
               id='PayPal'
               name='paymentMethod'
               value='PayPal'
-              checked
-              onChange={(e) => setPaymentMethod(e.target.value)}
+              onChange={(e) => setPaymentMethod({id: e.target.value})}
             ></Form.Check>
 
             {/* New Payment can be added here */}
@@ -50,6 +70,14 @@ const PaymentScreen = ({ history }) => {
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>*/}
+            <Form.Check
+              type='radio'
+              label='COD(Cash on Delivery)'
+              id='COD'
+              name='paymentMethod'
+              value='COD'
+              onChange={(e) => setPaymentMethod({id: e.target.value})}
+            ></Form.Check>
           </Col>
         </Form.Group>
 
