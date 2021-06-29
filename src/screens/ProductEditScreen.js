@@ -11,7 +11,7 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
-
+import { Menu, MenuItem, Typography } from "@material-ui/core";
 
 
 
@@ -28,21 +28,21 @@ const ProductEditScreen = ({ match, history }) => {
     { label: "GOLDEN", value: "GOLDEN"}
   ];
   const categories = [
-    { label: "Kids", value:"Kids" },
-    { label: "Male", value: "Male"},
-    { label: "Female", value:"Female" },
+    { label: "Categorie1", value:"Categorie1" },
+    { label: "Categorie2", value: "Categorie2"},
+    { label: "Categorie3", value:"Categorie3" },
+    { label: "Categorie4", value:"Categorie4" },
+    { label: "Categorie5", value:"Categorie5" },
   ];
-
+  /*
   const subcategories = [
-    { label: "Topwear", value:"Topwear" },
-    { label: "Footwear", value: "Footwear"},
-    { label: "Bottomwear", value:"Bottomwear" },
-    { label: "Accesories", value:"Accesories" },
+    { label: "Categorie1", value:"Categorie1" },
+    { label: "Categorie2", value: "Categorie2"},
+    { label: "Categorie3", value:"Categorie3" },
+    { label: "Categorie4", value:"Categorie4" },
+    { label: "Categorie5", value:"Categorie5" },
   ];
-
-  
-
-
+  */
 
   const productId = match.params.id
   const [name, setName] = useState('')
@@ -57,6 +57,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [descriptionLarge, setDescriptionLarge] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [uploading, setUploading] = useState(false)
+  const [state,setState] = useState('')
 
   const dispatch = useDispatch()
   const nameCategoryArray =[]
@@ -119,14 +120,11 @@ const ProductEditScreen = ({ match, history }) => {
       setUploading(false)
     }
   }
-
+  const set1= [];
   const submitHandler = (e) => {
     //let colors = e.target[5].value.split(',')
     //colors = colors.map((color) => color.toLowerCase())
     e.preventDefault()
-    nameCategoryArray.push(name);
-    nameCategoryArray.push(category);
-    console.log(nameCategoryArray)
     dispatch(
       updateProduct({
         _id: productId,
@@ -135,7 +133,7 @@ const ProductEditScreen = ({ match, history }) => {
         discountPrice,
         images,
         colors,
-        category: category.toLowerCase(),
+        category: category,
         subCategory: subCategory.toLowerCase(),
         descriptionSmall: descriptionSmall.toLowerCase(),
         descriptionLarge: descriptionLarge.toLowerCase(),
@@ -145,30 +143,31 @@ const ProductEditScreen = ({ match, history }) => {
     )
   }
   const set= [];
-  const set1= [];
   const set2= [];
 
-  const selectedOption = null;
+  //const selectedOption = null;
   const handleChange = (selectedOption) =>{
 
+    //const {category} = this.state
     for( let i = 0 ; i < selectedOption.length ; i++) {
       set.push((Object.values(selectedOption[i])[0]))
-      }
+    }
     console.log(set);
     setColors(set);
     console.log(selectedOption);
+   
   }
   //categories
-  const handleChange1 = (selectedOption) =>{
 
-    for( let i = 0 ; i < selectedOption.length ; i++) {
-      set1.push((Object.values(selectedOption[i])[0]))
-      }
-    console.log(set1);
-    setCategory(set1);
-    console.log(selectedOption);
+  const changeCategories =(selectedOption1) =>{
+    console.log(selectedOption1)
+
+    set2.push((Object.values(selectedOption1)[0]))
+    setCategory(set2)
+    console.log(set2)
   }
   //sub categories
+  /*
   const handleChange2 = (selectedOption) =>{
 
     for( let i = 0 ; i < selectedOption.length ; i++) {
@@ -178,7 +177,7 @@ const ProductEditScreen = ({ match, history }) => {
     setSubCategory(set2);
     console.log(selectedOption);
   }
-
+  */
   return (
 
     <div className="container page">
@@ -305,29 +304,35 @@ const ProductEditScreen = ({ match, history }) => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
+              <br />
+             </Form.Group>
               */}
+              
               <Select options={categories}
-              onChange={handleChange1}
+              onChange={changeCategories}
               autoFocus="false"
               />
             </Form.Group>
+              
 
+            
             <Form.Group controlId='subCategory'>
               <Form.Label>Sub Category</Form.Label>
-              {/*
+              
               <Form.Control
                 type='text'
                 placeholder='Topwear,Bottomwear,footwear,accessories'
                 value={subCategory}
                 onChange={(e) => setSubCategory(e.target.value)}
               ></Form.Control>
-              */}
+              </Form.Group>
+            {/*
               <Select options={subcategories}
               onChange={handleChange2}
               autoFocus="false"
               />
             </Form.Group>
-
+            */}
             <Form.Group controlId='descriptionSmall'>
               <Form.Label>Small Description</Form.Label>
               <Form.Control
