@@ -1,6 +1,6 @@
 import axios from 'axios'
-import * as React from 'react'
-import Select from 'react-select'
+import * as React from 'react';
+import Select from 'react-select';
 import '../index.css'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -10,26 +10,39 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
-import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
-import { Menu, MenuItem, Typography } from '@material-ui/core'
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
+import { Menu, MenuItem, Typography } from "@material-ui/core";
+
+
+
 
 const ProductEditScreen = ({ match, history }) => {
+
   const colours = [
-    { label: 'RED', value: 'RED' },
-    { label: 'BLUE', value: 'BLUE' },
-    { label: 'BLACK', value: 'BLACK' },
-    { label: 'PINK', value: 'PINK' },
-    { label: 'VIOLET', value: 'VIOLET' },
-    { label: 'SILVER', value: 'SILVER' },
-    { label: 'GOLDEN', value: 'GOLDEN' },
-  ]
-  const category = [
-    { label: 'Categorie1', value: 'Categorie1' },
-    { label: 'Categorie2', value: 'Categorie2' },
-    { label: 'Categorie3', value: 'Categorie3' },
-    { label: 'Categorie4', value: 'Categorie4' },
-    { label: 'Categorie5', value: 'Categorie5' },
-  ]
+    { label: "RED", value:"RED" },
+    { label: "BLUE", value: "BLUE"},
+    { label: "BLACK", value:"BLACK" },
+    { label: "PINK", value:"PINK" },
+    { label: "VIOLET", value:"VIOLET"},
+    { label: "SILVER", value:"SILVER" },
+    { label: "GOLDEN", value: "GOLDEN"}
+  ];
+  const categories = [
+    { label: "Categorie1", value:"Categorie1" },
+    { label: "Categorie2", value: "Categorie2"},
+    { label: "Categorie3", value:"Categorie3" },
+    { label: "Categorie4", value:"Categorie4" },
+    { label: "Categorie5", value:"Categorie5" },
+  ];
+  /*
+  const subcategories = [
+    { label: "Categorie1", value:"Categorie1" },
+    { label: "Categorie2", value: "Categorie2"},
+    { label: "Categorie3", value:"Categorie3" },
+    { label: "Categorie4", value:"Categorie4" },
+    { label: "Categorie5", value:"Categorie5" },
+  ];
+  */
 
   const productId = match.params.id
   const [name, setName] = useState('')
@@ -38,15 +51,16 @@ const ProductEditScreen = ({ match, history }) => {
   const [images, setImages] = useState('')
   const [colors, setColors] = useState('')
   const [sku, setSku] = useState('')
-  const [categories, setCategories] = useState('')
+  const [category, setCategory] = useState('')
+  const [subCategory, setSubCategory] = useState('')
   const [descriptionSmall, setDescriptionSmall] = useState('')
   const [descriptionLarge, setDescriptionLarge] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [uploading, setUploading] = useState(false)
-  const [state, setState] = useState('')
+  const [state,setState] = useState('')
 
   const dispatch = useDispatch()
-  const nameCategoryArray = []
+  const nameCategoryArray =[]
 
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
@@ -72,7 +86,8 @@ const ProductEditScreen = ({ match, history }) => {
         setImages(product.images)
         setCountInStock(product.countInStock)
         setColors(product.colors)
-        setCategories(product.categories)
+        setCategory(product.category)
+        setSubCategory(product.category)
         setDescriptionSmall(product.descriptionSmall)
         setDescriptionLarge(product.descriptionLarge)
         setSku(product.sku)
@@ -81,60 +96,45 @@ const ProductEditScreen = ({ match, history }) => {
   }, [dispatch, history, productId, product, successUpdate])
 
   const uploadFileHandler = async (e) => {
-    const selectedFiles = e.target.files
+    const files = e.target.files
     const formData = new FormData()
-    if (selectedFiles) {
-      for (let i = 0; i < selectedFiles.length; i++) {
-        formData.append('images', selectedFiles[i], selectedFiles[i].name)
+    for (const file of files) {
+      formData.append('images', file)
+    }
+
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       }
 
-      setUploading(true)
+      const { data } = await axios.post('/api/upload', formData, config)
 
-      try {
-        const config = {
-          headers: {
-            accept: 'application/json',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-          },
-        }
-
-        const { data } = await axios.post('/api/upload', formData, config)
-        console.log(data)
-        setImages(data)
-        setUploading(false)
-      } catch (error) {
-        console.error(error)
-        setUploading(false)
-      }
+      setImages(data)
+      setUploading(false)
+    } catch (error) {
+      console.error(error)
+      setUploading(false)
     }
   }
-  //images 
-  console.log(images)
-  var y = new String(images)
-  console.log(y)
-  const imageArray =[]
-  imageArray.push(y)
-  console.log(imageArray)
-  //images closed 
-  const set1 = []
+  const set1= [];
   const submitHandler = (e) => {
-    if(successUpdate){
-      history.push('/admin/productlist')
-    }
     //let colors = e.target[5].value.split(',')
     //colors = colors.map((color) => color.toLowerCase())
     e.preventDefault()
     dispatch(
       updateProduct({
         _id: productId,
-        name: name,
+        name:name,
         mrp,
         discountPrice,
-        images: imageArray,
+        images,
         colors,
-        category: categories,
-        //subCategory: subCategory.toLowerCase(),
+        category: category,
+        subCategory: subCategory.toLowerCase(),
         descriptionSmall: descriptionSmall.toLowerCase(),
         descriptionLarge: descriptionLarge.toLowerCase(),
         sku,
@@ -142,32 +142,34 @@ const ProductEditScreen = ({ match, history }) => {
       })
     )
   }
-  const set = []
-  const set2 = []
+  const set= [];
+  const set2= [];
 
   //const selectedOption = null;
-  const handleChange = (selectedOption) => {
+  const handleChange = (selectedOption) =>{
+
     //const {category} = this.state
-    for (let i = 0; i < selectedOption.length; i++) {
-      set.push(Object.values(selectedOption[i])[0])
+    for( let i = 0 ; i < selectedOption.length ; i++) {
+      set.push((Object.values(selectedOption[i])[0]))
     }
-    console.log(set)
-    setColors(set)
-    console.log(selectedOption)
+    console.log(set);
+    setColors(set);
+    console.log(selectedOption);
+   
   }
   //categories
 
-  const changeCategories = (selectedOption1) => {
+  const changeCategories =(selectedOption1) =>{
     console.log(selectedOption1)
 
-    set2.push(Object.values(selectedOption1)[0])
-    var x = new String(set2[0])
-    setCategories(x)
-    console.log(x)
+    set2.push((Object.values(selectedOption1)[0]))
+    setCategory(set2)
+    console.log(set2)
   }
   //sub categories
   /*
   const handleChange2 = (selectedOption) =>{
+
     for( let i = 0 ; i < selectedOption.length ; i++) {
       set2.push((Object.values(selectedOption[i])[0]))
       }
@@ -177,7 +179,8 @@ const ProductEditScreen = ({ match, history }) => {
   }
   */
   return (
-    <div className='container page'>
+
+    <div className="container page">
       <Link to='/admin/productlist' className='btn btn-light my-3'>
         Go Back
       </Link>
@@ -252,12 +255,10 @@ const ProductEditScreen = ({ match, history }) => {
                 onChange={(e) => setColors(e.target.value)}
               ></Form.Control>
               */}
-
-              <Select
-                options={colours}
-                isMulti
-                onChange={handleChange}
-                autoFocus='false'
+              
+              <Select options={colours} isMulti
+              onChange={handleChange}
+              autoFocus="false"
               />
               {/*
               <select multiple >
@@ -270,6 +271,9 @@ const ProductEditScreen = ({ match, history }) => {
                 ))}
                 </select>*/}
             </Form.Group>
+          
+
+
 
             <Form.Group controlId='countInStock'>
               <Form.Label>Count In Stock</Form.Label>
@@ -303,15 +307,25 @@ const ProductEditScreen = ({ match, history }) => {
               <br />
              </Form.Group>
               */}
-
-              <Select
-                options={category}
-                onChange={changeCategories}
-                autoFocus='false'
+              
+              <Select options={categories}
+              onChange={changeCategories}
+              autoFocus="false"
               />
             </Form.Group>
+              
 
-
+            
+            <Form.Group controlId='subCategory'>
+              <Form.Label>Sub Category</Form.Label>
+              
+              <Form.Control
+                type='text'
+                placeholder='Topwear,Bottomwear,footwear,accessories'
+                value={subCategory}
+                onChange={(e) => setSubCategory(e.target.value)}
+              ></Form.Control>
+              </Form.Group>
             {/*
               <Select options={subcategories}
               onChange={handleChange2}
@@ -352,5 +366,6 @@ const ProductEditScreen = ({ match, history }) => {
     </div>
   )
 }
+
 
 export default ProductEditScreen

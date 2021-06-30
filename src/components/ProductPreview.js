@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Row, Image, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import "../index.css";
 
 const ProductPreview = ({ props }) => {
-  const images = props;
   const [previewImg, setPreviewImg] = useState("");
-  console.log(images);
+  const productDetails = useSelector((state) => state.productDetails);
+  const { product } = productDetails;
   useEffect(() => {
-    setPreviewImg(images[0]);
+    setPreviewImg(product.images);
   }, [props]);
   return (
     <div className="previewImg">
@@ -15,7 +16,7 @@ const ProductPreview = ({ props }) => {
         <Image src={"..\\" + previewImg} style={{ height: "400px",width:"65%",justifyContent: "center",border: "1px solid"}} fluid />
       </Row>
       <Row className="justify-content-around">
-        {images.map((image, index) => {
+        {product.images.map((image, index) => {
         })}
       </Row>
     </div>
