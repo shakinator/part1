@@ -11,7 +11,6 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
-import { Menu, MenuItem, Typography } from '@material-ui/core'
 
 const ProductEditScreen = ({ match, history }) => {
   const colours = [
@@ -80,6 +79,7 @@ const ProductEditScreen = ({ match, history }) => {
     }
   }, [dispatch, history, productId, product, successUpdate])
 
+  var a = []
   const uploadFileHandler = async (e) => {
     const selectedFiles = e.target.files
     const formData = new FormData()
@@ -100,7 +100,7 @@ const ProductEditScreen = ({ match, history }) => {
         }
 
         const { data } = await axios.post('/api/upload', formData, config)
-        console.log(data)
+        //a.push(data)
         setImages(data)
         setUploading(false)
       } catch (error) {
@@ -110,20 +110,16 @@ const ProductEditScreen = ({ match, history }) => {
     }
   }
   //images 
-  console.log(images)
-  var y = new String(images)
-  console.log(y)
-  const imageArray =[]
-  imageArray.push(y)
-  console.log(imageArray)
+  var c = images.toString()
+  console.log(c)
+  a.push(c)
+  console.log(a)
   //images closed 
   const set1 = []
   const submitHandler = (e) => {
     if(successUpdate){
       history.push('/admin/productlist')
     }
-    //let colors = e.target[5].value.split(',')
-    //colors = colors.map((color) => color.toLowerCase())
     e.preventDefault()
     dispatch(
       updateProduct({
@@ -131,7 +127,7 @@ const ProductEditScreen = ({ match, history }) => {
         name: name,
         mrp,
         discountPrice,
-        images: imageArray,
+        images:a,
         colors,
         category: categories,
         //subCategory: subCategory.toLowerCase(),
@@ -165,17 +161,6 @@ const ProductEditScreen = ({ match, history }) => {
     setCategories(x)
     console.log(x)
   }
-  //sub categories
-  /*
-  const handleChange2 = (selectedOption) =>{
-    for( let i = 0 ; i < selectedOption.length ; i++) {
-      set2.push((Object.values(selectedOption[i])[0]))
-      }
-    console.log(set2);
-    setSubCategory(set2);
-    console.log(selectedOption);
-  }
-  */
   return (
     <div className='container page'>
       <Link to='/admin/productlist' className='btn btn-light my-3'>
@@ -244,31 +229,12 @@ const ProductEditScreen = ({ match, history }) => {
 
             <Form.Group controlId='colors'>
               <Form.Label>Available Colors</Form.Label>
-              {/*
-              <Form.Control
-                type='text'
-                placeholder='Enter Colors with comma saperated'
-                value={colors}
-                onChange={(e) => setColors(e.target.value)}
-              ></Form.Control>
-              */}
-
               <Select
                 options={colours}
                 isMulti
                 onChange={handleChange}
                 autoFocus='false'
               />
-              {/*
-              <select multiple >
-                {colours.map((option)=>(
-                  <option value={colours.value}
-                  onChange={(e) => setColors(e.target.value)}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-                </select>*/}
             </Form.Group>
 
             <Form.Group controlId='countInStock'>
@@ -293,17 +259,6 @@ const ProductEditScreen = ({ match, history }) => {
 
             <Form.Group controlId='category'>
               <Form.Label>Category</Form.Label>
-              {/*
-              <Form.Control
-                type='text'
-                placeholder='Kids Ladies or Gents'
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control>
-              <br />
-             </Form.Group>
-              */}
-
               <Select
                 options={category}
                 onChange={changeCategories}
@@ -311,14 +266,6 @@ const ProductEditScreen = ({ match, history }) => {
               />
             </Form.Group>
 
-
-            {/*
-              <Select options={subcategories}
-              onChange={handleChange2}
-              autoFocus="false"
-              />
-            </Form.Group>
-            */}
             <Form.Group controlId='descriptionSmall'>
               <Form.Label>Small Description</Form.Label>
               <Form.Control
