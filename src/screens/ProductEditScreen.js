@@ -112,8 +112,8 @@ const ProductEditScreen = ({ match, history }) => {
   //images 
   var c = images.toString()
   console.log(c)
-  a.push(c)
-  console.log(a)
+  //a.push(c)
+ // console.log(a)
   //images closed 
   const set1 = []
   const submitHandler = (e) => {
@@ -127,7 +127,7 @@ const ProductEditScreen = ({ match, history }) => {
         name: name,
         mrp,
         discountPrice,
-        images:a,
+        images:c,
         colors,
         category: categories,
         //subCategory: subCategory.toLowerCase(),
@@ -154,12 +154,14 @@ const ProductEditScreen = ({ match, history }) => {
   //categories
 
   const changeCategories = (selectedOption1) => {
-    console.log(selectedOption1)
 
-    set2.push(Object.values(selectedOption1)[0])
-    var x = new String(set2[0])
-    setCategories(x)
-    console.log(x)
+    for (let j = 0; j < selectedOption1.length; j++) {
+      set2.push(Object.values(selectedOption1[j])[1])
+    }
+    let uniqueChars = [...new Set(set2)];
+    console.log(uniqueChars)
+    setCategories(uniqueChars)
+    console.log(selectedOption1)
   }
   return (
     <div className='container page'>
@@ -260,7 +262,8 @@ const ProductEditScreen = ({ match, history }) => {
             <Form.Group controlId='category'>
               <Form.Label>Category</Form.Label>
               <Select
-                options={category}
+                options={category} 
+                isMulti
                 onChange={changeCategories}
                 autoFocus='false'
               />
