@@ -6,6 +6,7 @@ import Product from '../components/Product'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
+import SideBar from '../components/SideBar';
 import ProductCarousel from '../components/ProductCarousel'
 import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
@@ -28,6 +29,7 @@ const HomeScreen = ({ match }) => {
 
   return (
     <div className="container page">
+      
       <Meta />
       {!keyword ? (
         <ProductCarousel />

@@ -8,12 +8,14 @@ import Loader from "../components/Loader";
 import Meta from "../components/Meta";
 import Tabs, { TabPane } from 'rc-tabs';
 import ProductPreview from "../components/ProductPreview";
+import SingleBanner from "../components/SingleBanner"
 import "../index.css";
 import {
   listProductDetails,
   createProductReview,
 } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
+import { Menu, MenuItem, Typography } from "@material-ui/core";
 
 
 const ProductScreen = ({ history, match }) => {
@@ -62,13 +64,24 @@ const ProductScreen = ({ history, match }) => {
       })
     );
   };
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   console.log(product);
   return (
     <>
-      <Link className="btn btn-light my-2" to="/">
+    <SingleBanner />
+    <br />
+    <div className="container">
+      <Link className="btn btn-dark my-2" to="/">
         Go back
       </Link>
       {loading ? (
@@ -79,30 +92,49 @@ const ProductScreen = ({ history, match }) => {
         <>
           <Meta title={product.name} />
           <Row>
-            <Col md={6}>
+            <Col md={5}>
               {product.images == undefined ? (
                 <Loader />
               ) : (
                 <ProductPreview props={product.images} />
               )}
             </Col>
-            <Col md={3}>
+            <Col md={6}>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h3 className="product-name" style={{ color: "#CC1B6B" }}>
-                    {product.name}
-                  </h3>
-                  <h3 style={{ color: "#CC1B6B" }}> {product.category}</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?
-                   {/* {product.description}*/}</p>
-                </ListGroup.Item>
-                <ListGroup.Item>
+                  <h1 className="tabs">{product.name}</h1>
                   <Rating
                     value={product.rating}
-                    text={` ${product.numReviews} reviews`}
+                    text={`${product.numReviews} reviews`}
                   />
+                  <br />
+                  <h4>Price: ₹{product.mrp}</h4>
+                  <br />
+                  {/*
+                  <h3 style={{ color: "#CC1B6B"}}> {product.category}</h3>
+                  */}
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?
+                    {product.description}</p>
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ₹{product.mrp}</ListGroup.Item>
+                <ListGroup.Item>
+                  <div >
+                    <Button className="chooseColor" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                      Choose Colour
+                    </Button>
+                    <Menu
+                      id="simple-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={handleClose}
+                    >
+                      <MenuItem onClick={handleClose} className="tab1">RED</MenuItem>
+                      <MenuItem onClick={handleClose}className="tab2" >YELLOW</MenuItem>
+                      <MenuItem onClick={handleClose} className="tab3" >BLUE</MenuItem>
+                      <MenuItem onClick={handleClose} className="tab4" >GREEN</MenuItem>
+                    </Menu>
+                  </div>
+                </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>Status:</Col>
@@ -133,6 +165,7 @@ const ProductScreen = ({ history, match }) => {
                     </Row>
                   </ListGroup.Item>
                 )}
+                
                 <ListGroup.Item>
                   <Button
                     onClick={addToCartHandler}
@@ -148,20 +181,20 @@ const ProductScreen = ({ history, match }) => {
           </Row>
           <div className="App">
             <Tabs defaultActiveKey="1">
-              <TabPane tab="Product Description" key="1">
-                <h2>{product.name}</h2>
+              <TabPane tab="PRODUCT DESCRIPTION" key="1">
+                <h2 className="tabs">{product.name}</h2>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?
                 {product.description}
               </TabPane>
-              <TabPane tab="Additional Information" key="2">
-                <h2>Additional Information</h2>
+              <TabPane tab="ADDITIONAL INFORMATION" key="2">
+                <h2 className="tabs">Additional Information</h2>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?
               </TabPane>
-              <TabPane tab="Reviews" key="3">
+              <TabPane tab="REVIEWS" key="3">
               <Col md={6}>
-              <h2>Reviews</h2>
+              <h2 className="tabs">Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant="flush">
                 {product.reviews.map((review) => (
@@ -213,6 +246,7 @@ const ProductScreen = ({ history, match }) => {
                         disabled={loadingProductReview}
                         type="submit"
                         variant="primary"
+                        className="ReviewBtn"
                       >
                         Submit
                       </Button>
@@ -230,6 +264,10 @@ const ProductScreen = ({ history, match }) => {
           </div>
         </>
       )}
+    </div>
+    <br />
+    <h1 className="insta">Follow us on Instagram</h1>
+    <SingleBanner />
     </>
   );
 };

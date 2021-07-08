@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
-//import ImgLogo from ""
+
 import Divider from "@material-ui/core/Divider"
 import '../index.css'
 
@@ -22,14 +22,11 @@ const Header = () => {
       <Navbar  variant='dark' expand='lg' collapseOnSelect className="header" >
         <LinkContainer to='/'>
           <div className="logo">
-            <img  className="header__logo">   
+            <img className="header__logo">   
             </img>
           </div>
         </LinkContainer>
         <Container>
-          <LinkContainer to='/'>
-            <Navbar.Brand>Sarvacharya's E-commerce</Navbar.Brand>
-          </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Route render={({ history }) => <SearchBox history={history} />} className="search" />

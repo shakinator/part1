@@ -18,11 +18,14 @@ import UserEditScreen from './screens/UserEditScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
+import SideBar from "./components/SideBar";
+import Header2 from './components/Header2';
 const App = () => {
   return (
     <>
       <Router>
         <Header />
+        <Header2 />
         <main className='py-3'>
           <Container>
             <Route path='/order/:id' component={OrderScreen} />

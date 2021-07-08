@@ -13,7 +13,7 @@ const ProductPreview = ({ props }) => {
   return (
     <div className="previewImg">
       <Row>
-        <Image src={"..\\" + previewImg} style={{ height: "400px",width:"65%",justifyContent: "center",border: "1px solid"}} fluid />
+        <Image src={"..\\" + previewImg} style={{ display:"flex",height: "500px",width:"400px",border: "1px solid",alignItem:"flex-start",marginBottom:"10px"}} fluid />
       </Row>
       <Row className="justify-content-around">
         {product.images.map((image, index) => {
