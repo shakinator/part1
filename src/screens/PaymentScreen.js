@@ -53,19 +53,10 @@ const PaymentScreen = ({ history }) => {
     }
   }
   
-  /* 
-    const submitHandler = (e) => {
-    e.preventDefault()
-    dispatch(savePaymentMethod(paymentMethod))
-    history.push('/placeorder')
-  }
-  */
-
-
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
-      <h1>Payment Method</h1>
+      <h1 style={{color:"#cc1b6b"}} >Payment Method</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group>
           <Form.Label as='legend'>Select Method</Form.Label>
@@ -78,18 +69,6 @@ const PaymentScreen = ({ history }) => {
               value='PayPal'
               onChange={(e) => setPaymentMethod({id: e.target.value})}
             ></Form.Check>
-
-            {/* New Payment can be added here */}
-
-            {/*<Form.Check
-              type='radio'
-              label='Stripe'
-              id='Stripe'
-              name='paymentMethod'
-              value='Stripe'
-              checked
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            ></Form.Check>*/}
             <Form.Check
               type='radio'
               label='COD(Cash on Delivery)'
@@ -101,7 +80,7 @@ const PaymentScreen = ({ history }) => {
           </Col>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button type='submit' variant='primary' className="btn-block">
           Continue
         </Button>
       </Form>

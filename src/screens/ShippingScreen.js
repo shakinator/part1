@@ -4,8 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { saveShippingAddress } from '../actions/cartActions'
+import Select from 'react-select'
 
 const ShippingScreen = ({ history }) => {
+  const countries = [
+    { label: 'India', value: 'India' },
+    { label: 'United States', value: 'United States' },
+    { label: 'United Kingdom', value: 'United Kingdom' },
+  ]
   const cart = useSelector((state) => state.cart)
   const { shippingAddress } = cart
 
@@ -13,6 +19,7 @@ const ShippingScreen = ({ history }) => {
   const [city, setCity] = useState(shippingAddress.city)
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
   const [country, setCountry] = useState(shippingAddress.country)
+  const [landmark, setLandmark] = useState(shippingAddress.landmark)
 
   const dispatch = useDispatch()
   const submitHandler = (e) => {
@@ -20,13 +27,21 @@ const ShippingScreen = ({ history }) => {
     dispatch(saveShippingAddress({ address, city, postalCode, country }))
     history.push('/payment')
   }
+  var set =[]
+  const Country = (selectedOption1) => {
+    console.log(selectedOption1)
+    var x =Object.values(selectedOption1)[1]
+    setCountry(x)
+    console.log(country)
+    console.log(x)
+  }
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='address'>
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Enter an Address</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter address'
@@ -35,9 +50,20 @@ const ShippingScreen = ({ history }) => {
             onChange={(e) => setAddress(e.target.value)}
           ></Form.Control>
         </Form.Group>
+        
+        <Form.Group controlId='Landmark '>
+          <Form.Label>Add a Landmark</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter Landmark'
+            value={landmark}
+            required
+            onChange={(e) => setLandmark(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
 
         <Form.Group controlId='city'>
-          <Form.Label>City</Form.Label>
+          <Form.Label> Enter Your City</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter city'
@@ -48,7 +74,7 @@ const ShippingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId='postalCode'>
-          <Form.Label>Postal Code</Form.Label>
+          <Form.Label>Enter Your Postal Code</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter postal code'
@@ -59,7 +85,8 @@ const ShippingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId='country'>
-          <Form.Label>Country</Form.Label>
+          <Form.Label>Choose Your Country</Form.Label>
+          {/*
           <Form.Control
             type='text'
             placeholder='Enter country'
@@ -67,9 +94,15 @@ const ShippingScreen = ({ history }) => {
             required
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
+          */}
+          <Select
+            options={countries} 
+            onChange={Country}
+            autoFocus='false'
+          />
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button type='submit' variant='primary' className="btn-block">
           Continue
         </Button>
       </Form>

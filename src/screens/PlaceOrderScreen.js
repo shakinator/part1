@@ -68,23 +68,21 @@ const PlaceOrderScreen = ({ history }) => {
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h2>Shipping</h2>
+              <h1 style={{color:"#cc1b6b"}} >Shipping</h1>
               <p>
-                <strong>Address:</strong>
-                {cart.shippingAddress.address},{cart.shippingAddress.city} ,
-                {cart.shippingAddress.postalcode},{' '}
-                {cart.shippingAddress.country},
+                <strong>Address: </strong>
+                 {cart.shippingAddress.address}, {cart.shippingAddress.city} 
+                {cart.shippingAddress.postalcode} , {cart.shippingAddress.country} 
               </p>
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Payment</h2>
-              <strong>Method:</strong>
-              {cart.paymentMethod}
+              <h1  style={{color:"#cc1b6b"}} >Payment</h1>
+              <strong>Method:</strong>{cart.paymentMethod}
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Order Items</h2>
+              <h2  style={{color:"#cc1b6b"}} >Ordered Items</h2>
               {cart.cartItems.length === 0 ? (
                 <Message>Your cart is empty</Message>
               ) : (
@@ -92,20 +90,24 @@ const PlaceOrderScreen = ({ history }) => {
                   {cart.cartItems.map((item, index) => (
                     <ListGroup.Item key={index}>
                       <Row>
-                        <Col md={1}>
+                        <Col md={2}>
+
                           <Image
                             src={item.image}
                             alt={item.name}
                             fluid
                             rounded
                           />
+                        
                         </Col>
                         <Col>
-                          <Link to={`/product/${item.product}`}>
+                          <h5>Product</h5>
+                          <Link to={`/product/${item.product}`} style={{fontFamily:"monospace",fontWeight:"600px",textTransform:"capitalize",color:"#cc1b6b"}} >
                             {item.name}
                           </Link>
                         </Col>
-                        <Col md={4}>
+                        <Col md={5}>
+                          <h5>Price</h5>
                           {item.qty} x ₹{item.price} = ₹{item.qty * item.price}
                         </Col>
                       </Row>
@@ -117,37 +119,34 @@ const PlaceOrderScreen = ({ history }) => {
           </ListGroup>
         </Col>
         <Col md={4}>
-          <Card>
+          <Card className="placeorderCart">
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h2>Order Summary</h2>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Items</Col>
+                  <Col>Total Items:</Col>
                   <Col>₹{cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Shipping</Col>
+                  <Col>Shipping:</Col>
                   <Col>₹{cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Tax</Col>
+                  <Col>Tax:</Col>
                   <Col>₹{cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Total</Col>
+                  <Col>Grand Total:</Col>
                   <Col>₹{cart.totalPrice}</Col>
                 </Row>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                {error && <Message variant='danger'>{error}</Message>}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button

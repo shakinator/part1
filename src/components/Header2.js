@@ -78,7 +78,7 @@ const Header2 = ({history}) => {
     <header>
       <Navbar
         expand="lg"
-        style={{backgroundImage: "linear-gradient(135deg, #9796f0 10%, #FBC7D4 100%)"}}
+        style={{backgroundImage: "linear-gradient(135deg, #a3bded 10%, #6991c7 100%)"}}
         collapseOnSelect
       >
         <LinkContainer to='/'>
@@ -338,7 +338,7 @@ const Header2 = ({history}) => {
             <Route render={({ history }) => <SearchBox history={history} />} className="search" />
               */}
             <form>
-                <input type="text" name="search" placeholder="Search for products" aria-label="Search" />
+                <input className="customSearch" type="text" name="search" placeholder="Search for products" aria-label="Search" />
             </form>
             <Nav className='ml-auto'>
               <LinkContainer to=''>

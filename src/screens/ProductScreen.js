@@ -110,9 +110,6 @@ const ProductScreen = ({ history, match }) => {
                   <br />
                   <h4>Price: ₹{product.mrp}</h4>
                   <br />
-                  {/*
-                  <h3 style={{ color: "#CC1B6B"}}> {product.category}</h3>
-                  */}
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?
                     {product.description}</p>
                 </ListGroup.Item>

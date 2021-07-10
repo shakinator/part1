@@ -100,7 +100,7 @@ const ProductEditScreen = ({ match, history }) => {
         }
 
         const { data } = await axios.post('/api/upload', formData, config)
-        //a.push(data)
+
         setImages(data)
         setUploading(false)
       } catch (error) {
@@ -112,9 +112,6 @@ const ProductEditScreen = ({ match, history }) => {
   //images 
   var c = images.toString()
   console.log(c)
-  //a.push(c)
- // console.log(a)
-  //images closed 
   const set1 = []
   const submitHandler = (e) => {
     if(successUpdate){
@@ -141,9 +138,7 @@ const ProductEditScreen = ({ match, history }) => {
   const set = []
   const set2 = []
 
-  //const selectedOption = null;
   const handleChange = (selectedOption) => {
-    //const {category} = this.state
     for (let i = 0; i < selectedOption.length; i++) {
       set.push(Object.values(selectedOption[i])[0])
     }

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
-// import Loader from '../components/Loader'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 import '../index.css'
 
@@ -34,7 +33,7 @@ const CartScreen = ({ match, location, history }) => {
   return (
     <div className="container page">
       <Row>
-        <Col md={8}>
+        <Col md={7}>
           <h1>Shopping Cart</h1>
           {cartItems.length === 0 ? (
             <Message>
@@ -46,13 +45,19 @@ const CartScreen = ({ match, location, history }) => {
                 <ListGroup.Item key={item.product}>
                   <Row>
                     <Col md={2}>
+                      
                       <Image src={item.image} alt={item.name} fluid rounded />
+                      
                     </Col>
                     <Col md={3}>
-                      <Link to={`/product/₹{item.product}`}>{item.name}</Link>
+                      <h5>Poduct</h5>
+                      <Link to={`/product/₹{item.product}`} style={{fontFamily:"monospace",fontWeight:"600px",textTransform:"capitalize",color:"#cc1b6b"}} >
+                        {item.name}</Link>
                     </Col>
-                    <Col md={2}>₹{item.price}</Col>
+                    <Col md={2}><h5>Price</h5>
+                      ₹{item.price}</Col>
                     <Col md={2}>
+                      <h5>Qty.</h5>
                       <Form.Control
                         as='select'
                         value={item.qty}
@@ -70,9 +75,10 @@ const CartScreen = ({ match, location, history }) => {
                       </Form.Control>
                     </Col>
                     <Col md={2}>
+                      <h5>Remove</h5>
                       <Button
                         type='button'
-                        variant='light'
+                        className="remove"
                         onClick={() => removeFromCartHandler(item.product)}
                       >
                         <i className='fas fa-trash'></i>
@@ -84,22 +90,23 @@ const CartScreen = ({ match, location, history }) => {
             </ListGroup>
           )}
         </Col>
-        <Col md={4}>
-          <Card>
+        <Col md={5}>
+          <Card className="cart">
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h2>
-                  Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
-                  ) items
+                  Subtotal 
                 </h2>
-                ₹
+                <h5>Total Items : {cartItems.reduce((acc, item) => acc + item.qty, 0)}</h5>
+                <h5>Total Price :                 ₹
                 {cartItems
                   .reduce((acc, item) => acc + item.qty * item.price, 0)
-                  .toFixed(2)}
+                  .toFixed(2)}</h5>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button
                   type='button'
+                
                   className='btn-block'
                   disabled={cartItems.length === 0}
                   onClick={checkoutHandler}
