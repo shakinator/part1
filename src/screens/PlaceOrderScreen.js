@@ -65,7 +65,7 @@ const PlaceOrderScreen = ({ history }) => {
     <div className="container page">
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
-        <Col md={8}>
+        <Col md={7}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h1 style={{color:"#cc1b6b"}} >Shipping</h1>
@@ -118,7 +118,7 @@ const PlaceOrderScreen = ({ history }) => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col md={4}>
+        <Col md={5}>
           <Card className="placeorderCart">
             <ListGroup variant='flush'>
               <ListGroup.Item>
@@ -126,25 +126,25 @@ const PlaceOrderScreen = ({ history }) => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Total Items:</Col>
-                  <Col>₹{cart.itemsPrice}</Col>
+                  <Col md={6}><h5>Total Items:</h5></Col>
+                  <Col md={6}>₹{cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Shipping:</Col>
+                  <Col><h5>Shipping:</h5></Col>
                   <Col>₹{cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Tax:</Col>
+                  <Col><h5>Tax:</h5></Col>
                   <Col>₹{cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Grand Total:</Col>
+                  <Col><h5>Grand Total:</h5></Col>
                   <Col>₹{cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
