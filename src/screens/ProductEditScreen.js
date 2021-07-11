@@ -42,10 +42,8 @@ const ProductEditScreen = ({ match, history }) => {
   const [descriptionLarge, setDescriptionLarge] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [uploading, setUploading] = useState(false)
-  const [state, setState] = useState('')
 
   const dispatch = useDispatch()
-  const nameCategoryArray = []
 
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
@@ -79,7 +77,7 @@ const ProductEditScreen = ({ match, history }) => {
     }
   }, [dispatch, history, productId, product, successUpdate])
 
-  var a = []
+
   const uploadFileHandler = async (e) => {
     const selectedFiles = e.target.files
     const formData = new FormData()
@@ -112,7 +110,6 @@ const ProductEditScreen = ({ match, history }) => {
   //images 
   var c = images.toString()
   console.log(c)
-  const set1 = []
   const submitHandler = (e) => {
     if(successUpdate){
       history.push('/admin/productlist')

@@ -1,17 +1,11 @@
 import React from "react";
-import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-import SearchBox from "./SearchBox";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import '../index.css';
 import ImgLogo from "../Images/edelie-white.png"
-import { Form, Button } from 'react-bootstrap'
-//import SideBar from "./SideBar";
 import { useState } from "react";
-//import ReactTooltip from "react-tooltip";
 import { Menu, MenuItem, Typography } from "@material-ui/core";
-
 import NestedMenuItem from "material-ui-nested-menu-item";
 
 
@@ -337,9 +331,11 @@ const Header2 = ({history}) => {
               {/*
             <Route render={({ history }) => <SearchBox history={history} />} className="search" />
               */}
+              
             <form>
                 <input className="customSearch" type="text" name="search" placeholder="Search for products" aria-label="Search" />
             </form>
+            
             <Nav className='ml-auto'>
               <LinkContainer to=''>
                 <Nav.Link>

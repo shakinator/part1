@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
-//import '../index.css';
+import '../index.css';
 const SearchBox = ({ history }) => {
   const [keyword, setKeyword] = useState('')
 

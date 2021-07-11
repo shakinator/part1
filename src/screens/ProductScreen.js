@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, ListGroup, Card, Button, Form } from "react-bootstrap";
+import { Row, Col, ListGroup, Button, Form } from "react-bootstrap";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -15,7 +15,7 @@ import {
   createProductReview,
 } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
-import { Menu, MenuItem, Typography } from "@material-ui/core";
+import { Menu, MenuItem } from "@material-ui/core";
 
 
 const ProductScreen = ({ history, match }) => {
@@ -93,7 +93,7 @@ const ProductScreen = ({ history, match }) => {
           <Meta title={product.name} />
           <Row>
             <Col md={5}>
-              {product.images == undefined ? (
+              {product.images === undefined ? (
                 <Loader />
               ) : (
                 <ProductPreview props={product.images} />

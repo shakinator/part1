@@ -95,6 +95,7 @@ const Footer = () => {
             <ul className="list-unstyled list-inline">
               <li className="list-inline-item">
                 <a
+                href={""}
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
@@ -103,6 +104,7 @@ const Footer = () => {
               </li>
               <li className="list-inline-item">
                 <a
+                href={""}
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
@@ -111,6 +113,7 @@ const Footer = () => {
               </li>
               <li className="list-inline-item">
                 <a
+                href={""}
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
@@ -119,6 +122,7 @@ const Footer = () => {
               </li>
               <li className="list-inline-item">
                 <a
+                href={""}
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
@@ -136,6 +140,7 @@ const Footer = () => {
             <ul className="bttn ">
               <li className="list-inline-item">
                 <a
+                href={""}
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
@@ -144,6 +149,7 @@ const Footer = () => {
               </li>
               <li className="list-inline-item">
                 <a
+                href={""}
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
@@ -152,6 +158,7 @@ const Footer = () => {
               </li>
               <li className="list-inline-item">
                 <a
+                href={""}
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
@@ -160,6 +167,7 @@ const Footer = () => {
               </li>
               <li className="list-inline-item">
                 <a
+                href={""}
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >

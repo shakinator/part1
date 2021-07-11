@@ -5,8 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
-
-import Divider from "@material-ui/core/Divider"
 import '../index.css'
 
 const Header = () => {

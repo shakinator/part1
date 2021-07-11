@@ -40,7 +40,7 @@ export default class SimpleSlider extends Component {
       <div>
         {console.log(products)}
         <h2 className="pl-2"> Category</h2>
-        {products[0] == undefined ? (
+        {products[0] === undefined ? (
           console.log("hello")
         ) : (
           <Slider {...settings}>

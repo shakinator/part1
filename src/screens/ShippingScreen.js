@@ -27,7 +27,6 @@ const ShippingScreen = ({ history }) => {
     dispatch(saveShippingAddress({ address, city, postalCode, country }))
     history.push('/payment')
   }
-  var set =[]
   const Country = (selectedOption1) => {
     console.log(selectedOption1)
     var x =Object.values(selectedOption1)[1]
@@ -86,15 +85,6 @@ const ShippingScreen = ({ history }) => {
 
         <Form.Group controlId='country'>
           <Form.Label>Choose Your Country</Form.Label>
-          {/*
-          <Form.Control
-            type='text'
-            placeholder='Enter country'
-            value={country}
-            required
-            onChange={(e) => setCountry(e.target.value)}
-          ></Form.Control>
-          */}
           <Select
             options={countries} 
             onChange={Country}

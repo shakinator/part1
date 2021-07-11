@@ -10,7 +10,7 @@ import { createOrder } from '../actions/orderActions'
 const PaymentScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
   const orderCreate = useSelector((state) => state.orderCreate)
-  const { order, success, error } = orderCreate
+  const { order, success} = orderCreate
   const { shippingAddress } = cart
 
   if (!shippingAddress) {
@@ -32,7 +32,7 @@ const PaymentScreen = ({ history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    if(paymentMethod.id=="PayPal"){
+    if(paymentMethod.id==="PayPal"){
       dispatch(savePaymentMethod(paymentMethod.id))
       dispatch(
         createOrder({

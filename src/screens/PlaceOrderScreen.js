@@ -33,7 +33,7 @@ const PlaceOrderScreen = ({ history }) => {
     ).toFixed(2)
   )
   const orderCreate = useSelector((state) => state.orderCreate)
-  const { order, success, error } = orderCreate
+  const { order, success } = orderCreate
 
   useEffect(() => {
     if (success) {
@@ -54,10 +54,10 @@ const PlaceOrderScreen = ({ history }) => {
         totalPrice: cart.totalPrice,
       })
     )
-    if(cart.paymentMethod=="COD") {
+    if(cart.paymentMethod==="COD") {
       history.push('/profile')
     }
-    if(cart.paymentMethod=="PayPal") {
+    if(cart.paymentMethod==="PayPal") {
       //history.push(`/order/${order._id}`)
     }
   }
