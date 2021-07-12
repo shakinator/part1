@@ -84,8 +84,8 @@ const Header2 = ({history}) => {
           </div>
         </LinkContainer>
         {/* Footwear */}
-        <div onClick={handleRightClick1} className="footwear">
-            <Typography style={{color:"black",paddingRight:"15px"}} component="h2" variant="h6" 
+        <div onMouseEnter={handleRightClick1} className="footwear" >
+            <Typography style={{color:"black",paddingRight:"15px",cursor:"pointer"}} component="h2" variant="h6" 
             //data-tip='NEW'
             >MEN'S</Typography>
             <Menu
@@ -157,7 +157,7 @@ const Header2 = ({history}) => {
 
         {/* Clothing */}
         
-        <div onClick={handleRightClick} className="clothing">
+        <div onMouseEnter={handleRightClick} className="clothing">
             <Typography className="categories"  variant="h6" component="h2" 
             //data-tip='NEW' 
             style={{color:"black",paddingRight:"15px"}}
@@ -294,7 +294,7 @@ const Header2 = ({history}) => {
 
         {/* Accessories*/}
 
-        <div onClick={handleRightClick2} className="accessories">
+        <div onMouseEnter={handleRightClick2} className="accessories">
             <Typography style={{color:"black",paddingRight:"15px"}}  className="categories"  variant="h6" component="h2">
                 KIDS</Typography>
             <Menu
