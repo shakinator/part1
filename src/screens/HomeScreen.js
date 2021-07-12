@@ -33,9 +33,6 @@ const HomeScreen = ({ match }) => {
     <div className="container page">
       
       <Meta />
-      <Link to='/' className='btn btn-light'>
-          Go Back
-        </Link>
         {/*
       {!keyword ? (
         <BannerCrousel />
