@@ -7,6 +7,8 @@ import ImgLogo from "../Images/edelie-white.png"
 import { useState } from "react";
 import { Menu, MenuItem, Typography } from "@material-ui/core";
 import NestedMenuItem from "material-ui-nested-menu-item";
+import { Route } from 'react-router-dom'
+import SearchBox from './SearchBox'
 
 
 
@@ -328,14 +330,14 @@ const Header2 = ({history}) => {
         </div>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
-              {/*
-            <Route render={({ history }) => <SearchBox history={history} />} className="search" />
-              */}
               
+            <Route render={({ history }) => <SearchBox history={history} />} className="search" />
+              
+              {/*
             <form>
                 <input className="customSearch" type="text" name="search" placeholder="Search for products" aria-label="Search" />
             </form>
-            
+              */}
             <Nav className='ml-auto'>
               <LinkContainer to=''>
                 <Nav.Link>

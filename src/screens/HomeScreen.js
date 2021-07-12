@@ -6,11 +6,11 @@ import Product from '../components/Product'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
-import SideBar from '../components/SideBar';
-import ProductCarousel from '../components/ProductCarousel'
 import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
 import '../index.css'
+import BannerCrousel from '../components/BannerCrousel'
+
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword
@@ -28,16 +28,23 @@ const HomeScreen = ({ match }) => {
   }, [dispatch, keyword, pageNumber])
 
   return (
+    <>
+    <BannerCrousel />
     <div className="container page">
       
       <Meta />
+      <Link to='/' className='btn btn-light'>
+          Go Back
+        </Link>
+        {/*
       {!keyword ? (
-        <ProductCarousel />
+        <BannerCrousel />
       ) : (
         <Link to='/' className='btn btn-light'>
           Go Back
         </Link>
       )}
+      */}
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />
@@ -60,6 +67,7 @@ const HomeScreen = ({ match }) => {
         </>
       )}
     </div>
+    </>
   )
 }
 
