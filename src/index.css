@@ -17,30 +17,6 @@ h2 {
 }
 
 /* CROUSEL */
-.carousel-item-next,
-.carousel-item-prev,
-.carousel-item.active {
-  display: flex;
-}
-
-.carousel-caption {
-  position: absolute;
-  top: 0;
-}
-.carousel-caption h2 {
-  color: #fff;
-}
-
-.carousel img {
-  height: 300px;
-  padding: 30px;
-  margin: 40px;
-  border-radius: 50%;
-}
-
-.carousel a {
-  margin: 0 auto;
-}
 
 .bttn {
   display: flexbox;
@@ -234,4 +210,22 @@ h2 {
 
 .searchbox:focus {
   width: 100%;
+}
+
+
+.btn-carousel {
+  background-color:black;
+  color: white;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.btn-carousel:hover {
+  background-color: rgb(48, 47, 47);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+  0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.carouselText {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

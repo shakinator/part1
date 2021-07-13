@@ -1,10 +1,11 @@
-import React from "react";
-import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
-"mdbreact";
 import img_1 from "./../Assets/1.jpg";
 import img_2 from "./../Assets/2.jpg";
 import img_3 from "./../Assets/3.jpg";
 import img_4 from "./../Assets/4.jpg";
+import React from "react";
+import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer, Button } from
+"mdbreact";
+
 
 
 const CarouselPage = () => {
@@ -13,10 +14,11 @@ const CarouselPage = () => {
       <MDBCarousel
       activeItem={1}
       length={4}
+      slide={true}
       showControls={true}
       showIndicators={true}
       className="z-depth-1"
-      style={{height:"50vh"}}
+      style={{height:"100%",width:"100%"}}
     >
       <MDBCarouselInner>
         <MDBCarouselItem itemId="1">
@@ -30,10 +32,12 @@ const CarouselPage = () => {
           <MDBMask overlay="black-light" />
           </MDBView>
           <MDBCarouselCaption>
+            <h3 className="h3-responsive carouselText" style={{fontWeight:"bold"}}>First Product</h3>
+            <Button className="btn-carousel">click me </Button>
           </MDBCarouselCaption>
         </MDBCarouselItem>
         <MDBCarouselItem itemId="2">
-          <MDBView>
+        <MDBView>
             <img
               className="d-block w-100"
               src={img_2}
@@ -43,6 +47,8 @@ const CarouselPage = () => {
           <MDBMask overlay="black-strong" />
           </MDBView>
           <MDBCarouselCaption>
+            <h3 className="h3-responsive carouselText" style={{fontWeight:"bold"}}>Second Product</h3>
+            <Button variant="primary" className="btn-carousel">click me </Button>
           </MDBCarouselCaption>
         </MDBCarouselItem>
         <MDBCarouselItem itemId="3">
@@ -56,6 +62,8 @@ const CarouselPage = () => {
           <MDBMask overlay="black-slight" />
           </MDBView>
           <MDBCarouselCaption>
+            <h3 className="h3-responsive carouselText" style={{fontWeight:"bold"}}>Third Product</h3>
+            <Button variant="primary" className="btn-carousel">click me </Button>
           </MDBCarouselCaption>
         </MDBCarouselItem>
         <MDBCarouselItem itemId="4">
@@ -69,6 +77,8 @@ const CarouselPage = () => {
           <MDBMask overlay="black-light" />
           </MDBView>
           <MDBCarouselCaption>
+            <h3 className="h3-responsive carouselText" style={{fontWeight:"bold"}}>Fourth Product</h3>
+            <Button variant="primary" className="btn-carousel">click me </Button>
           </MDBCarouselCaption>
         </MDBCarouselItem>
       </MDBCarouselInner>

@@ -1,8 +1,7 @@
 import React,{useState} from 'react';
 import { slide as Menu } from 'react-burger-menu';
-import { Typography,Button } from '@material-ui/core';
+import {Button } from '@material-ui/core';
 import { useDispatch , useSelector} from 'react-redux';
-import { LinkContainer } from "react-router-bootstrap";
 import {Link } from 'react-router-dom';
 
 
@@ -11,7 +10,6 @@ const SideBar=(_id,name,mrp,rating,discountPrice,category,subcategory) => {
     const[filter2,setFilter2]= useState("")
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList)
-    const { loading, error, products, pages, page } = productList
 
     
    /*

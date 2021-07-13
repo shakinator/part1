@@ -20,6 +20,7 @@ import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
 import SideBar from "./components/SideBar";
 import Header2 from './components/Header2';
+import ContactUs from './screens/ContactUs';
 const App = () => {
   return (
     <>
@@ -38,6 +39,7 @@ const App = () => {
             <Route path='/product/:id' component={ProductScreen} />
             <Route path='/cart/:id?' component={CartScreen} />
             <Route path='/admin/userlist' component={UserListScreen} />
+            <Route path='/contactUs' component={ContactUs} />
             <Route path='/admin/user/:id/edit' component={UserEditScreen} />
             <Route
               path='/admin/productlist/'

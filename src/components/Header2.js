@@ -9,6 +9,7 @@ import { Menu, MenuItem, Typography } from "@material-ui/core";
 import NestedMenuItem from "material-ui-nested-menu-item";
 import { Route } from 'react-router-dom'
 import SearchBox from './SearchBox'
+import { logout } from '../actions/userActions'
 
 
 
@@ -20,7 +21,7 @@ const Header2 = ({history}) => {
   
   const logoutHandler = () => {
       dispatch(logout())
-    }
+  }
     //clothing
   const [menuPosition, setMenuPosition] = useState(null);
 
@@ -339,7 +340,7 @@ const Header2 = ({history}) => {
             </form>
               */}
             <Nav className='ml-auto'>
-              <LinkContainer to=''>
+              <LinkContainer to='/contactUs'>
                 <Nav.Link>
                   <i class="fas fa-phone fa-lg"><i className="phone">Call Us Now</i></i>
                 </Nav.Link>
