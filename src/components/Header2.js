@@ -80,7 +80,7 @@ const Header2 = ({history}) => {
       >
         <LinkContainer to='/'>
           <div className="logo">
-            <img src={ImgLogo} className="header__logo">   
+            <img src={ImgLogo} className="header__logo" alt="headerlogo" >   
             </img>
           </div>
         </LinkContainer>

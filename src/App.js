@@ -18,7 +18,6 @@ import UserEditScreen from './screens/UserEditScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
-import SideBar from "./components/SideBar";
 import Header2 from './components/Header2';
 import ContactUs from './screens/ContactUs';
 const App = () => {

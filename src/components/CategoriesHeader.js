@@ -1,11 +1,6 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-import SearchBox from "./SearchBox";
+import { Navbar } from "react-bootstrap";
 import '../index.css';
-import SideBar from "./SideBar";
 import { useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { Menu, MenuItem, Typography } from "@material-ui/core";

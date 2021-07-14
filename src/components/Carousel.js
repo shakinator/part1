@@ -4,7 +4,6 @@ import { Row, Col, Button, ButtonGroup } from "react-bootstrap";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import img_1 from "./../Assets/1.jpg";
 import img_2 from "./../Assets/2.jpg";
-import img_3 from "./../Assets/3.jpg";
 
 
 const styles = { height: 400, width: "100%" };

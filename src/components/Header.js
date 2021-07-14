@@ -20,7 +20,7 @@ const Header = () => {
       <Navbar  variant='dark' expand='lg' collapseOnSelect className="header" >
         <LinkContainer to='/'>
           <div className="logo">
-            <img className="header__logo">   
+            <img className="header__logo" alt="headerlogo">   
             </img>
           </div>
         </LinkContainer>

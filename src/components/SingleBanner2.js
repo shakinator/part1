@@ -1,4 +1,3 @@
-import img_1 from "./../Assets/01.jpg";
 import img_2 from "./../Assets/02.jpg";
 import { Container, Row } from "react-bootstrap";
 import "../index.css"

@@ -19,8 +19,6 @@ import { Menu, MenuItem } from "@material-ui/core";
 
 
 const ProductScreen = ({ history, match }) => {
-  const productList = useSelector((state) => state.productList);
-  const {  products } = productList;
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");

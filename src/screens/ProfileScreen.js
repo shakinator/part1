@@ -8,7 +8,7 @@ import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { listMyOrders } from '../actions/orderActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
-const ProfileScreen = ({ location, history }) => {
+const ProfileScreen = ({ history }) => {
   const [name, setName] = useState('')
   const [mobile, setMobile] = useState('')
   const [email, setEmail] = useState('')
@@ -141,6 +141,8 @@ const ProfileScreen = ({ location, history }) => {
                 <th>PAID</th>
                 <th>DELIVERED</th>
                 <th></th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -167,6 +169,20 @@ const ProfileScreen = ({ location, history }) => {
                     <LinkContainer to={`/order/${order._id}`}>
                       <Button className='btn-sm' variant='light'>
                         Details
+                      </Button>
+                    </LinkContainer>
+                  </td>
+                  <td>
+                    <LinkContainer>
+                      <Button variant='light'>
+
+                      </Button>
+                    </LinkContainer>
+                  </td>
+                  <td>
+                    <LinkContainer>
+                      <Button variant='light'>
+                        
                       </Button>
                     </LinkContainer>
                   </td>

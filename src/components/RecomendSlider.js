@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-// import img_1 from "./../Assets/01.jpg";
-// import img_2 from "./../Assets/02.jpg";
 import "./../index.css";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
