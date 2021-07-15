@@ -15,6 +15,7 @@ const ProfileScreen = ({ history }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState(null)
+  const [createdAt , setcreatedAt] = useState('')
 
   const dispatch = useDispatch()
 
@@ -56,6 +57,54 @@ const ProfileScreen = ({ history }) => {
       )
     }
   }
+  //for return  button 
+  {/*
+  const returnButton = (e) => {
+    var x = e.substring(0,10);
+    let dateOrder = new Date(x +"Z");
+    var y = dateOrder.setDate(dateOrder.getDate() + 18)
+    var todayDate = new Date()
+    
+    if(todayDate < y){
+
+    }
+    else if(todayDate === y ){
+
+    }
+    else {
+      
+    }
+  }
+*/}
+
+  const sampleButton=(e)=>{
+    // creating a sample date string
+    var str = "2021-07-01"
+    // using that string to make an actual date 
+    let order = new Date(str +"Z");
+    console.log(order)
+    var c = order
+    // creating date variable for today's date 
+    var date = new Date()
+    // adding 18 days to the order variable
+    var y = new Date(c.setDate(c.getDate() + 18))
+    console.log(date)
+    console.log(y)
+    var returnedStatus = true;
+    // check if today's date is less than or equal to order date + 18 days 
+    if(date < y){
+      returnedStatus = false
+      console.log(returnedStatus)
+    }
+    else if(date === y){
+      returnedStatus = false
+      console.log(returnedStatus)
+    }
+    else {
+      console.log(returnedStatus)
+    }
+  }
+
 
   return (
     <Row>
@@ -123,6 +172,10 @@ const ProfileScreen = ({ history }) => {
           <Button type='submit' variant='primary'>
             Update
           </Button>
+          <br />
+          <Button onClick={sampleButton}>
+            Click me 
+          </Button>
         </Form>
       </Col>
       <Col md={9}>
@@ -174,7 +227,7 @@ const ProfileScreen = ({ history }) => {
                   </td>
                   <td>
                     <LinkContainer>
-                      <Button variant='light'>
+                      <Button variant='light' onClick={returnButton(order.createdAt)} >
 
                       </Button>
                     </LinkContainer>
