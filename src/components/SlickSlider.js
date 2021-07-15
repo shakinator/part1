@@ -52,7 +52,7 @@ export default class SimpleSlider extends Component {
                       src={"..\\" + product.images[0]}
                     />
                   </Link>
-                  <div class="cart-details">
+                  <div className="cart-details">
                     <Link to={`/product/${product._id}`}>
                       <h6 className="pro-title px-sm-3 p-0 mt-2">
                         {product.name}
@@ -62,10 +62,10 @@ export default class SimpleSlider extends Component {
                       value={product.rating}
                       text={`${product.numReviews} reviews`}
                     />
-                    <div class="pro-price py-1">
+                    <div className="pro-price py-1">
                       <h5>
                         <small>
-                          <s class="text-secondary">₹{product.mrp}</s>
+                          <s className="text-secondary">₹{product.mrp}</s>
                         </small>
                         <span>
                           ₹{" "}
@@ -88,28 +88,28 @@ export default class SimpleSlider extends Component {
             <img
               src={img_1}
               style={{ height: "30vh" }}
-              class="img-fluid"
+              className="img-fluid"
               alt="Image 1"
             />
-            <div class="cart-details">
-              <h6 class="pro-title p-0 mt-2">Vinyl Top Folding Table</h6>
-              <div class="rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+            <div className="cart-details">
+              <h6 className="pro-title p-0 mt-2">Vinyl Top Folding Table</h6>
+              <div className="rating">
+                <i className="fas fa-star"></i>
+                <i className="fas fa-star"></i>
+                <i className="fas fa-star"></i>
+                <i className="fas fa-star"></i>
+                <i className="fas fa-star-half-alt"></i>
               </div>
-              <div class="pro-price py-2">
+              <div className="pro-price py-2">
                 <h5>
                   <small>
-                    <s class="text-secondary">$125.99</s>
+                    <s className="text-secondary">$125.99</s>
                   </small>
                   <span>$120</span>
                 </h5>
               </div>
-              <div class="cart mt-1">
-                <button class="border site-btn btn-span">Add to Cart</button>
+              <div className="cart mt-1">
+                <button className="border site-btn btn-span">Add to Cart</button>
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@ const SingleBanner = () => {
   return (
     <Container fluid>
       <Row className="px-0 justify-content-around">
-        <div class="col-md-5 col-12 p-0 col-lg-12 m-0">
+        <div className="col-md-5 col-12 p-0 col-lg-12 m-0">
           <img
             src={img_1}
             style={{ height: "30vh",width:"100%" }}

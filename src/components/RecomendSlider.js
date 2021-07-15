@@ -53,7 +53,7 @@ export default class RecomendSlider extends Component {
                       src={"..\\" + product.images[0]}
                     />
                   </Link>
-                  <div class="cart-details">
+                  <div className="cart-details">
                     <Link to={`/product/${product._id}`}>
                       <h6 className="pro-title px-sm-3 p-0 mt-2">
                         {product.name}
@@ -63,10 +63,10 @@ export default class RecomendSlider extends Component {
                       value={product.rating}
                       text={`${product.numReviews} reviews`}
                     />
-                    <div class="pro-price py-1">
+                    <div className="pro-price py-1">
                       <h5>
                         <small>
-                          <s class="text-secondary">₹{product.mrp}</s>
+                          <s className="text-secondary">₹{product.mrp}</s>
                         </small>
                         <span>
                           ₹{" "}

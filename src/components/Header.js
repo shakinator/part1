@@ -32,7 +32,7 @@ const Header = () => {
               className="btn-floating btn-sm text-white m-auto"
               style={{ fontSize: "30px",justifyContent: "center" }}
             >
-              <i class="fas fa-phone social "><i className="phone">Call us now</i></i>
+              <i className="fas fa-phone social "><i className="phone">Call us now</i></i>
             </a>
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>

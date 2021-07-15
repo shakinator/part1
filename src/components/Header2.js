@@ -342,7 +342,7 @@ const Header2 = ({history}) => {
             <Nav className='ml-auto'>
               <LinkContainer to='/contactUs'>
                 <Nav.Link>
-                  <i class="fas fa-phone fa-lg"><i className="phone">Call Us Now</i></i>
+                  <i className="fas fa-phone fa-lg"><i className="phone">Call Us Now</i></i>
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to='/cart'>

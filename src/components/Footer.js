@@ -99,7 +99,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-                  <i class="fab fa-facebook social"></i>
+                  <i className="fab fa-facebook social"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -108,7 +108,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-                  <i class="fab fa-instagram social"></i>
+                  <i className="fab fa-instagram social"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -117,7 +117,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-                  <i class="fab fa-linkedin-in social"></i>
+                  <i className="fab fa-linkedin-in social"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -126,7 +126,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-                  <i class="fab fa-twitter social"></i>
+                  <i className="fab fa-twitter social"></i>
                 </a>
               </li>
             </ul>
@@ -144,7 +144,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-                  <i class="fab fa-paypal bttn"></i>
+                  <i className="fab fa-paypal bttn"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -153,7 +153,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-	                <i class="fab fa-cc-visa"></i>
+	                <i className="fab fa-cc-visa"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -162,7 +162,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-	                <i class="fab fa-cc-visa"></i>
+	                <i className="fab fa-cc-visa"></i>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -171,7 +171,7 @@ const Footer = () => {
                   className="btn-floating btn-sm text-white"
                   style={{ fontSize: "30px" }}
                 >
-	                <i class="fab fa-cc-stripe"></i>
+	                <i className="fab fa-cc-stripe"></i>
                 </a>
               </li>
             </ul>

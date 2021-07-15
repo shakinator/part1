@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <Container fluid>
       <Row className="px-0 justify-content-around">
-        <div class="col-md-5 col-12 p-0  m-0">
+        <div className="col-md-5 col-12 p-0  m-0">
           <img
             src={img_1}
             style={{ height: "30vh" }}
@@ -13,7 +13,7 @@ const Banner = () => {
             alt="Banner 1"
           />
         </div>
-        <div class="col-md-5 col-12  p-0 m-0">
+        <div className="col-md-5 col-12  p-0 m-0">
           <img
             src={img_2}
             style={{ height: "30vh" }}

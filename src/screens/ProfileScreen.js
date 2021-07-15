@@ -58,7 +58,7 @@ const ProfileScreen = ({ history }) => {
     }
   }
   //for return  button 
-  {/*
+  /*
   const returnButton = (e) => {
     var x = e.substring(0,10);
     let dateOrder = new Date(x +"Z");
@@ -75,7 +75,7 @@ const ProfileScreen = ({ history }) => {
       
     }
   }
-*/}
+*/
 
   const sampleButton=(e)=>{
     // creating a sample date string
