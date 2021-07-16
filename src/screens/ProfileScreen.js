@@ -15,7 +15,6 @@ const ProfileScreen = ({ history }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState(null)
-  const [createdAt , setcreatedAt] = useState('')
 
   const dispatch = useDispatch()
 
@@ -60,21 +59,29 @@ const ProfileScreen = ({ history }) => {
   //for return  button 
   /*
   const returnButton = (e) => {
-    var x = e.substring(0,10);
+    var x = e.slice(0,10)
     let dateOrder = new Date(x +"Z");
-    var y = dateOrder.setDate(dateOrder.getDate() + 18)
+    var order = dateOrder
+    var y = order.setDate(order.getDate() + 18)
     var todayDate = new Date()
-    
+    var returnedStatus = true;
     if(todayDate < y){
-
+      returnedStatus = false;
+      console.log(returnedStatus)
     }
     else if(todayDate === y ){
-
+      returnedStatus = false
+      console.log(returnedStatus)
     }
     else {
-      
+      console.log(returnedStatus)
     }
   }
+*/
+/*
+const replaceButton= (e) =>{
+  
+}
 */
 
   const sampleButton=(e)=>{
@@ -227,15 +234,15 @@ const ProfileScreen = ({ history }) => {
                   </td>
                   <td>
                     <LinkContainer>
-                      <Button variant='light' onClick={returnButton(order.createdAt)} >
-
+                      <Button variant='light' onClick={returnButton(order.createdAt)} style={{backgroundColor:"#cc1b6b"}} >
+                        Return
                       </Button>
                     </LinkContainer>
                   </td>
                   <td>
                     <LinkContainer>
-                      <Button variant='light'>
-                        
+                      <Button variant='light' onClick={replaceButton()} style={{backgroundColor:"#cc1b6b"}}>
+                        Replace
                       </Button>
                     </LinkContainer>
                   </td>
