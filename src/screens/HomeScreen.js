@@ -9,6 +9,11 @@ import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
 import '../index.css'
 import BannerCrousel from '../components/BannerCrousel'
+import Breadcrumbs from '@material-ui/core/Breadcrumbs'
+import Link from '@material-ui/core/Link';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
+import GrainIcon from '@material-ui/icons/Grain';
+
 
 
 const HomeScreen = ({ match }) => {
@@ -30,6 +35,20 @@ const HomeScreen = ({ match }) => {
     <>
     <BannerCrousel />
     <div className="container page">
+      <br />
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link color="inherit" href="/" style={{display:"flex"}}>
+          Home
+        </Link>
+        <Link color="inherit" href="/" style={{display:"flex"}}>
+          <WhatshotIcon style={{marginRight: "theme.spacing(0.5)",width:"20",height:"20"}} />
+          Products
+        </Link>
+        <Link color="inherit" href="/" style={{display:"flex"}}>
+          <GrainIcon style={{marginRight: "theme.spacing(0.5)",width:"20",height:"20"}} />
+          Profile
+        </Link>
+      </Breadcrumbs>
       
       <Meta />
       <h1>Latest Products</h1>
