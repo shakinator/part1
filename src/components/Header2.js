@@ -329,7 +329,7 @@ const Header2 = ({history}) => {
                     </NestedMenuItem>
             </Menu>
         </div>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
               
             <Route render={({ history }) => <SearchBox history={history} />} className="search" />

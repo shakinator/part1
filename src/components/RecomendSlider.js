@@ -37,8 +37,6 @@ export default class RecomendSlider extends Component {
     return (
       <div>
         {console.log(products)}
-        <h2 className="pl-2"> You Might Also Like This </h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis</p>
         {products[0] === undefined ? (
           console.log("hello")
         ) : (

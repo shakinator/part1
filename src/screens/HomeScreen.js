@@ -13,6 +13,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import Link from '@material-ui/core/Link';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import GrainIcon from '@material-ui/icons/Grain';
+import MultiCarouselPage from '../components/Slider';
 
 
 
@@ -49,7 +50,6 @@ const HomeScreen = ({ match }) => {
           Profile
         </Link>
       </Breadcrumbs>
-      
       <Meta />
       <h1>Latest Products</h1>
       {loading ? (
@@ -58,11 +58,16 @@ const HomeScreen = ({ match }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
-          <Row>
+          <Row md="4">
             {products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+              <Col key={product._id} sm={12} md={4} lg={4} xl={3}>
                 <Product product={product} />
               </Col>
+            ))}
+          </Row>
+          <Row md="8">
+          {products.map((product) => (
+                <MultiCarouselPage product={product} />
             ))}
           </Row>
           <Paginate

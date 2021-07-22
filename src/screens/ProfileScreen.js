@@ -57,7 +57,7 @@ const ProfileScreen = ({ history }) => {
     }
   }
   //for return  button 
-  /*
+/*
   const returnButton = (e) => {
     var x = e.slice(0,10)
     let dateOrder = new Date(x +"Z");
@@ -77,12 +77,12 @@ const ProfileScreen = ({ history }) => {
       console.log(returnedStatus)
     }
   }
-*/
-/*
+
 const replaceButton= (e) =>{
   
 }
 */
+
 
   const sampleButton=(e)=>{
     // creating a sample date string
@@ -234,14 +234,18 @@ const replaceButton= (e) =>{
                   </td>
                   <td>
                     <LinkContainer>
-                      <Button variant='light' onClick={returnButton(order.createdAt)} style={{backgroundColor:"#cc1b6b"}} >
+                      <Button variant='light' 
+                      //onClick={returnButton(order.createdAt)} 
+                      style={{backgroundColor:"#cc1b6b"}} >
                         Return
                       </Button>
                     </LinkContainer>
                   </td>
                   <td>
                     <LinkContainer>
-                      <Button variant='light' onClick={replaceButton()} style={{backgroundColor:"#cc1b6b"}}>
+                      <Button variant='light' 
+                      //onClick={replaceButton()} 
+                      style={{backgroundColor:"#cc1b6b"}}>
                         Replace
                       </Button>
                     </LinkContainer>
