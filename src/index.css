@@ -233,3 +233,20 @@ h2 {
 .cardImage:hover {
   opacity: 0.7;
 }
+
+.sizeBtn {
+  border-radius: 47%;
+  background-color:#E0E0E0;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.sizeBtn:hover {
+  opacity:0.7;
+}

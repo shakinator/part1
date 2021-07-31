@@ -14,6 +14,7 @@ import Link from '@material-ui/core/Link';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import GrainIcon from '@material-ui/icons/Grain';
 import MultiCarouselPage from '../components/Slider';
+import SizeChart from '../components/SizeChart';
 
 
 
@@ -34,6 +35,7 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
+    <SizeChart />
     <BannerCrousel />
     <div className="container page">
       <br />
@@ -75,6 +77,7 @@ const HomeScreen = ({ match }) => {
             page={page}
             keyword={keyword ? keyword : ''}
           />
+
         </>
       )}
     </div>
